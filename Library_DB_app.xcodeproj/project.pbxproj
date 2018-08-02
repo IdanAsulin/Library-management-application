@@ -28,6 +28,7 @@
 		3E44C0C12107D166004D19A6 /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 		3E44C0C9210DF62A004D19A6 /* Database.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = Database.cpp; sourceTree = "<group>"; };
 		3E44C0CB210DF648004D19A6 /* Database.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Database.h; sourceTree = "<group>"; };
+		3E44C0CC2110B065004D19A6 /* costumerSupplier.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = costumerSupplier.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -60,6 +61,7 @@
 		3E44C0C02107D166004D19A6 /* Library_DB_app */ = {
 			isa = PBXGroup;
 			children = (
+				3E44C0CC2110B065004D19A6 /* costumerSupplier.h */,
 				3E44C0CB210DF648004D19A6 /* Database.h */,
 				3E44C0C9210DF62A004D19A6 /* Database.cpp */,
 				3E44C0C12107D166004D19A6 /* main.cpp */,

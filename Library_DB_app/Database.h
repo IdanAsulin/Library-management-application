@@ -14,6 +14,7 @@
 #include <cppconn/resultset.h>
 #include <cppconn/statement.h>
 #include <cppconn/prepared_statement.h>
+#include <iostream>
 using namespace sql;
 using namespace std;
 #define DB_NAME "books_library"
@@ -36,6 +37,19 @@ public:
     static Database& getInstance();
     
     Connection *getConnection();
+    
+    void showBooksInStock ();
+    void showOpenOrders ();
+    void showCostumers ();
+    void showSuppliers ();
+    void showTransactionBetween ();
+    void showBooksWithDiscount ();
+    void checkBookInStock ();
+    void showBookSuppliers ();
+    void howManyCopiesSoldSince ();
+    void howManyBooksPurchByCostumer ();
+    void showCostuDetWitMostPurch ();
+    void showSuppDetWitMostOrd ();
     
     virtual ~Database() {}
 };

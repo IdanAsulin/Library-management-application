@@ -4,7 +4,7 @@
 //
 //  Created by Idan Asulin on 25/07/2018.
 //  Copyright © 2018 Idan Asulin. All rights reserved.
-//
+// Made by Idan Asulin 203949250, Uri Elimelech 308431931
 
 #include <iostream>
 #include "Database.h"
@@ -69,38 +69,38 @@ int main(int argc, const char * argv[]) {
                 db.showSuppDetWitMostOrd();
                 break;
             }
-            /*case 13: {
-                
+            case 13: {
+                db.showNumOfOrdersBetween();
                 break;
             }
             case 14: {
-                
+                db.showOrdersBecomeDeals();
                 break;
             }
             case 15: {
-                
+                db.howMuchDiscForCos();
                 break;
             }
             case 16: {
-                
+                db.totalRev();
                 break;
             }
             case 17: {
-                
+                db.howManyNewCos();
                 break;
             }
             case 18: {
-                
+                db.sumOfPurchFromSupp();
                 break;
             }
             case 19: {
-                
+                db.sumOfSales();
                 break;
             }
             case 20: {
-                
+                db.topTen();
                 break;
-            }*/
+            }
             case 21: {
                 cout << "Bye Bye..." << endl << endl;
                 flag = false;
@@ -113,10 +113,6 @@ int main(int argc, const char * argv[]) {
                 cin.ignore(10000, '\n');
                 break;
         }
-        
     }
-    
-    
-    
     return 0;
 }

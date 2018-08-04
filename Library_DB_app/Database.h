@@ -50,7 +50,14 @@ public:
     void howManyBooksPurchByCostumer ();
     void showCostuDetWitMostPurch ();
     void showSuppDetWitMostOrd ();
-    
+    void showNumOfOrdersBetween ();
+    void showOrdersBecomeDeals ();
+    void howMuchDiscForCos ();
+    void totalRev ();
+    void howManyNewCos ();
+    void sumOfPurchFromSupp ();
+    void sumOfSales ();
+    void topTen ();
     virtual ~Database() {}
 };
 

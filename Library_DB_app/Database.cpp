@@ -9,6 +9,7 @@
 #include "Database.h"
 #include <string>
 #include "costumerSupplier.h"
+#include "book.h"
 void cinClearing () {
     string temp;
     getline(cin, temp);
@@ -39,18 +40,19 @@ Database::Database() : driver(get_driver_instance()) {
                           "price_before_discount INT UNSIGNED, "
                           "stock INT UNSIGNED, "
                           "global_discount_precents INT UNSIGNED, "
-                          "supplier_num INT UNSIGNED "
+                          "supplier_num INT UNSIGNED, "
+                          "sold_copies INT UNSIGNED"
                           ")");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Harry Potter', 100, 15, 0, 1)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Monte Cristo', 150, 453, 0, 2)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('The Ring', 80, 0, 0, 3)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Fire', 40, 33, 0, 4)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Way To Heaven', 120, 45, 0, 5)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Bible', 55, 33, 0, 6)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Computers', 33, 10, 15, 7)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('Web Development', 90, 3, 20, 7)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('C++', 96, 6, 30, 7)");
-            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num) VALUES ('C sharp', 48, 8, 10, 4)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Harry Potter', 100, 15, 0, 1, 10)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Monte Cristo', 150, 453, 0, 2, 11)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('The Ring', 80, 0, 0, 3, 3)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Fire', 40, 33, 0, 4, 23)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Way To Heaven', 120, 45, 0, 5, 55)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Bible', 55, 33, 0, 6, 2)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Computers', 33, 10, 15, 7, 0)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('Web Development', 90, 3, 20, 7, 0)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('C++', 96, 6, 30, 7, 0)");
+            stmt->execute("INSERT INTO book (book_name, price_before_discount, stock, global_discount_precents, supplier_num, sold_copies) VALUES ('C sharp', 48, 8, 10, 4, 4)");
             
             stmt->execute("CREATE TABLE IF NOT EXISTS costumer ( "
                           "costumer_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, "
@@ -139,18 +141,19 @@ Database::Database() : driver(get_driver_instance()) {
                           "book_name VARCHAR(25), "
                           "supply_date DATETIME, "
                           "amount INT UNSIGNED, "
+                          "supply_cost INT UNSIGNED, "
                           "PRIMARY KEY(supplier_id, book_name) "
                           ")");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (1, 'Harry Potter', '1999-3-9', 10)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (1, 'C++', '2008-4-20', 1)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (2, 'Monte Cristo', '2013-6-27', 33)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (3, 'C sharp', '1998-5-28', 32)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (4, 'Way To Heaven', '2011-11-11', 55)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (5, 'Web Development', '2005-8-18', 43)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (6, 'Web Development', '2007-3-27', 2)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (3, 'Fire', '2007-2-10', 12)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (3, 'Computers', '1999-8-9', 11)");
-            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount) VALUES (5, 'Computers', '2001-2-10', 6)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (1, 'Harry Potter', '1999-3-9', 10, 100)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (1, 'C++', '2008-4-20', 1, 50)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (2, 'Monte Cristo', '2013-6-27', 33, 30)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (3, 'C sharp', '1998-5-28', 32, 55)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (4, 'Way To Heaven', '2011-11-11', 55, 67)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (5, 'Web Development', '2005-8-18', 43, 74)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (6, 'Web Development', '2007-3-27', 2, 23)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (3, 'Fire', '2007-2-10', 12, 54)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (3, 'Computers', '1999-8-9', 11, 67)");
+            stmt->execute("INSERT INTO supply (supplier_id, book_name, supply_date, amount, supply_cost) VALUES (5, 'Computers', '2001-2-10', 6, 188)");
             
             stmt->execute("CREATE TABLE IF NOT EXISTS supplier ( "
                           "supplier_id INT UNSIGNED AUTO_INCREMENT PRIMARY KEY, "
@@ -505,5 +508,235 @@ void Database::showSuppDetWitMostOrd () {
     delete row;
 }
 
+void Database::showNumOfOrdersBetween () {
+    string date1,date2;
+    cout << "Please enter start date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date1;
+    cout << "Please enter end date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date2;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT * FROM orders WHERE order_date BETWEEN ? AND ?");
+    pstmt->setString(1, date1);
+    pstmt->setString(2, date2);
+    ResultSet *row = pstmt->executeQuery();
+    row->beforeFirst();
+    cout << "Number of orders: " << row->rowsCount() << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
 
+void Database::showOrdersBecomeDeals () {
+    string date1,date2;
+    cout << "Please enter start date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date1;
+    cout << "Please enter end date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date2;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT * FROM orders WHERE order_date BETWEEN ? AND ? AND order_status = 'Payed'");
+    pstmt->setString(1, date1);
+    pstmt->setString(2, date2);
+    ResultSet *row = pstmt->executeQuery();
+    row->beforeFirst();
+    cout << "Number of orders: " << row->rowsCount() << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
 
+void Database::howMuchDiscForCos () {
+    int cosNum;
+    string date;
+    cout << "Please enter costumer number" << endl;
+    cinClearing();
+    cin >> cosNum;
+    cout << "Please enter date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT SUM(discount_ils) as counter FROM transaction WHERE transaction_date >= ? AND costumer_id = ?");
+    pstmt->setString(1, date);
+    pstmt->setUInt(2, cosNum);
+    ResultSet *row = pstmt->executeQuery();
+    row->first();
+    cout << "Total discount: " << row->getUInt("counter") << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
+
+void Database::totalRev () {
+    string date, s_date, e_date;
+    int q;
+    cout << "Please enter year (yyyy)" << endl;
+    cinClearing();
+    cin >> date;
+    cout << "Please enter quarter number (number between 1-4)" << endl;
+    cinClearing();
+    cin >> q;
+    switch (q) {
+        case 1:
+            s_date = date + "-1-1";
+            e_date = date + "-3-30";
+            break;
+        case 2:
+            s_date = date + "-4-1";
+            e_date = date + "-6-30";
+            break;
+        case 3:
+            s_date = date + "-7-1";
+            e_date = date + "-9-30";
+            break;
+        case 4:
+            s_date = date + "-10-1";
+            e_date = date + "-12-30";
+            break;
+    }
+    cout << s_date << endl;
+    cout << e_date << endl;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT SUM(cost) as totalIn FROM transaction WHERE transaction_date BETWEEN ? AND ?");
+    pstmt->setString(1, s_date);
+    pstmt->setString(2, e_date);
+    ResultSet *row = pstmt->executeQuery();
+    row->first();
+    int in = row->getUInt("totalIn");
+    pstmt = con->prepareStatement("SELECT SUM(supply_cost) as totalOut FROM supply WHERE supply_date BETWEEN ? AND ?");
+    pstmt->setString(1, s_date);
+    pstmt->setString(2, e_date);
+    row = pstmt->executeQuery();
+    row->first();
+    int out = row->getUInt("totalOut");
+    cout << "Total incomes: " << in - out << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
+
+void Database::howManyNewCos () {
+    string date;
+    cout << "Please enter date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT * FROM costumer WHERE join_date >= ?");
+    pstmt->setString(1, date);
+    ResultSet *row = pstmt->executeQuery();
+    row->beforeFirst();
+    cout << "Number of costumers who joined since then: " << row->rowsCount() << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
+
+void Database::sumOfPurchFromSupp () {
+    int suppId;
+    string date1, date2;
+    cout << "Please enter supplier ID" << endl;
+    cinClearing();
+    cin >> suppId;
+    cout << "Please enter start date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date1;
+    cout << "Please enter end date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date2;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT SUM(supply_cost) as counter FROM supply WHERE supplier_id = ? AND supply_date BETWEEN ? AND ?");
+    pstmt->setUInt(1, suppId);
+    pstmt->setString(2, date1);
+    pstmt->setString(3, date2);
+    ResultSet *row = pstmt->executeQuery();
+    row->first();
+    cout << "Total orders cost: " << row->getUInt("counter") << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
+
+void Database::sumOfSales () {
+    int empID;
+    string date1, date2;
+    cout << "Please enter employee ID" << endl;
+    cinClearing();
+    cin >> empID;
+    cout << "Please enter start date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date1;
+    cout << "Please enter end date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date2;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT SUM(cost) AS counter FROM transaction WHERE emp_id = ? AND transaction_date BETWEEN ? AND ?");
+    pstmt->setUInt(1, empID);
+    pstmt->setString(2, date1);
+    pstmt->setString(3, date2);
+    ResultSet *row = pstmt->executeQuery();
+    row->first();
+    cout << "Total sales: " << row->getUInt("counter") << endl << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}
+
+void Database::topTen () {
+    string date1, date2;
+    cout << "Please enter start date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date1;
+    cout << "Please enter end date (yyyy-mm-dd)" << endl;
+    cinClearing();
+    cin >> date2;
+    Connection *con = driver->connect(connection_properties);
+    con->setSchema(DB_NAME);
+    PreparedStatement *pstmt = con->prepareStatement("SELECT book_name FROM contain INNER JOIN transaction ON contain.order_id = transaction.order_id WHERE transaction.transaction_date BETWEEN ? AND ?");
+    pstmt->setString(1, date1);
+    pstmt->setString(2, date2);
+    ResultSet *row = pstmt->executeQuery();
+    int numOfDifBooks = (int)row->rowsCount();
+    int count = 1;
+    cout << "Top 10 books: " << endl;
+    if(numOfDifBooks <= 10)
+        while(row->next())
+            cout << count++ << ". " << row->getString("book_name") << endl;
+    else {
+    book books[numOfDifBooks];
+    row->beforeFirst();
+    int i = 0;
+    while(row->next())
+        books[i].setBookName(row->getString("book_name"));
+    pstmt = con->prepareStatement("SELECT book_name, order_id FROM contain INNER JOIN transaction ON contain.order_id = transaction.order_id WHERE transaction.transaction_date BETWEEN ? AND ?");
+    pstmt->setString(1, date1);
+    pstmt->setString(2, date2);
+    row = pstmt->executeQuery();
+    row->beforeFirst();
+    while(row->next())
+        for(i = 0; i < numOfDifBooks; ++i)
+            if(row->getString("book_name") == books[i].getBookName())
+                books[i].addBooks(1);
+    for(i = 0; i < numOfDifBooks; ++ i)
+        for(int j = i + 1; j < numOfDifBooks; ++j)
+            if(books[i].getSold() > books[j].getSold()) {
+                int temp = books[i].getSold();
+                books[i].setSold(books[j].getSold());
+                books[j].setSold(temp);
+            }
+        for(i = numOfDifBooks - 9; i <= numOfDifBooks; ++i)
+            cout << count++ << ". " << books[i].getBookName() << ", Sold copies: " << books[i].getSold() << endl;
+    }
+    cout << endl;
+    delete con;
+    delete pstmt;
+    delete row;
+}

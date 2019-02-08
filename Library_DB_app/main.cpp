@@ -4,7 +4,6 @@
 //
 //  Created by Idan Asulin on 25/07/2018.
 //  Copyright © 2018 Idan Asulin. All rights reserved.
-// Made by Idan Asulin 203949250, Uri Elimelech 308431931
 
 #include <iostream>
 #include "Database.h"

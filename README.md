@@ -10,4 +10,3 @@ To start you will need to download the source code files and compile it on your 
 * This project includes entity relationship diagram (ERD) which describes the database design.
 * Local SQL database - responsible for creating the database if it doesn't exist on your computer.
 * This project was written in C++ on Xcode IDE and use the SQL connector library for C++.
-* 
